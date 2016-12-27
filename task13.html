@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>IFE JavaScript Task 01</title>
+	</head>
+
+	<body>
+
+		<label>请输入北京今天空气质量：
+			<input id="aqi-input" type="text" />
+		</label>
+		<button id="button">确认填写</button>
+
+		<div>您输入的值是：
+			<span id="aqi-display">尚无录入</span>
+		</div>
+
+		<script type="text/javascript">
+			(function() {
+				var aButton = document.getElementById('button');
+				var aDisplay = document.getElementById('aqi-display');
+				var aInput = document.getElementById('aqi-input');
+				var handle = function commit(){
+					var val = aInput.value;
+					if((!isNaN(val)) && (val!='') && val>=0 && val<1000){
+						aDisplay.innerHTML = val;
+					}
+					else { 
+						alert(val+'不是有效数字，请输入0~1000');
+				    	aInput.focus();
+					}
+					aInput.value = '';
+				}
+				aButton.onclick = function(){
+					handle();
+				}	
+				//回车执行事件
+				aInput.onkeyup = function(event){
+					if((event.which || event.keyCode) === 13){  // 使用 which 兼容FF
+						handle();
+					}
+				}
+				
+			})();
+		</script>
+		<hr/>
+		<p>.focus()，.onclick，isNaN()返回布尔值，event.keyCode执行事件</p>
+	</body>
+
+</html>
