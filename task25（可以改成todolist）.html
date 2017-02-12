@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*{margin: 0;padding: 0;}*/
+			
+			fieldset {
+				width: 300px;
+				margin: 20px;
+			}
+			span {
+				display: inline-block;
+			}
+			
+			#tree-module {
+				height: 400px;
+				margin-top: 10px;
+				position: relative;
+				font-size: 14px;
+			}
+			
+			.nodebody-hidden {
+				margin-left: 10%;
+				margin-top: 5px;
+				display: none;
+			}
+			.nodebody-show{
+				display: block;
+			}
+			
+			.tree-title {
+				display: inline-block;
+				position: relative;
+				width: 100%;
+			}
+			.tree-title-content {
+				padding-left: 5px;
+				color: darkslategray;
+			}
+			
+			.add-btn,.del-btn{
+				font-size: 20px;
+				font-weight: bolder;
+				float: right;
+				margin: 0 2px;
+				display: none;
+			}
+			.tree-title span:hover {
+				cursor: pointer;
+				color: dodgerblue;
+			}
+			.tree-title:hover .add-btn,.tree-title:hover .del-btn{
+				display: block;
+				cursor: pointer;
+			}
+			
+			.right-arrow {
+				border-top: 5px solid transparent;
+				border-bottom: 5px solid transparent;
+				border-left: 10px solid #122B40;
+			}
+			.down-arrow {
+				border-left: 5px solid transparent;
+				border-right: 5px solid transparent;
+				border-top: 10px solid #122B40;
+			}
+			
+			.active{
+				background-color:greenyellow;
+			}
+			.found{
+				background-color:springgreen;
+			}
+			.default{
+			background-color: #fff;
+		}
+		</style>
+	</head>
+
+	<body>
+		<fieldset>
+			<legend>树形组件</legend>
+			<input type="text" id="search"/>
+			<button id="search-btn">搜索</button>
+
+			<!--<br>-->
+			<div id="tree-module">
+				<div class="nodebody-hidden nodebody-show">
+					<label class="tree-title">
+							<span class=" right-arrow"></span> 
+							<span class="tree-title-content">
+								前端技能树
+							</span>
+							<span class="del-btn">×</span>
+							<span class="add-btn">+</span>
+				  	</label>
+					<!--</div>-->
+					<div class="nodebody-hidden">
+						<label class="tree-title">
+							<span class=" right-arrow"></span> 
+							<span class="tree-title-content">
+								技能
+							</span>		
+							<span class="del-btn">×</span>
+							<span class="add-btn">+</span>
+						</label>
+						<div class="nodebody-hidden">
+							<label class="tree-title">
+					    		<span class=" right-arrow"></span> 
+					    		<span class="tree-title-content">
+						    		a
+						    	</span>
+						    	<span class="del-btn">×</span>
+					     		<span class="add-btn">+</span>
+				            </label>
+						</div>
+					</div>
+					<div class="nodebody-hidden">
+						<label class="tree-title">
+							<span class=" right-arrow"></span> 
+							<span class="tree-title-content">
+								博客
+							</span>
+							<span class="del-btn">×</span>
+							<span class="add-btn">+</span>
+				        </label>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+
+		<script src="js/task25.js"></script>
+	<hr />
+	<p>好像浪费了label，但是没找到合适的用法;很多函数都是浅显的定义了检索的位置，不够组件化</p>
+	</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			form{
+				margin: 20px;
+			}
+			div{
+				width: 400px;
+				margin: 5px auto;
+				position: relative;
+			}
+			label{
+				position: absolute;
+				width: 100px;
+				text-align: right;
+				left: -100px;
+				top: 5px;
+			}
+			span{
+				position: absolute;
+				font-size: 12px;
+				color: #265A88;
+				margin: 6px 0 0 5px ;
+				width: 200px;
+			}
+			input{
+				height: 25px;
+				width: 300px;
+				border-radius: 5px;
+				border:1px solid #ADADAD;
+			}
+			.hidden{
+				display: none;
+			}
+			button{
+				display: block;
+				margin-left: 40%;
+				margin-top: 20px;
+				padding: 5px 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form>
+			<div>
+				<label for="username">名称：	</label>
+				<input id="username" type="text" />
+				<span></span>
+				<span>必填，长度为4-16个字符</span>
+			</div>
+			<div>
+				<label for="key">密码：	</label>
+				<input id="key" type="password" />
+				<span></span>
+				<span>6到16位数字和字母</span>
+			</div>
+			<div>
+				<label for="confirmkey">确认密码：	</label>
+				<input id="confirmkey" type="password" />
+				<span></span>
+				<span>重复输入密码</span>
+			</div>
+			<div>
+				<label for="email">邮箱：	</label>
+				<input id="email" type="email" />
+				<span></span>
+				<span>输入邮箱地址</span>
+			</div>
+			<div>
+				<label for="phone">手机：	</label>
+				<input id="phone" type="text" />
+				<span></span>
+				<span>请输入11位手机号</span>
+			</div>
+
+			<button type="button">提交</button>
+		</form>
+	</body>
+	<script src="js/task30.js"></script>
+
+</html>

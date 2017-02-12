@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			form {
+				font-size: 14px;
+			}
+			
+			#username {
+				height: 30px;
+				width: 200px;
+				border: 1px solid #ADADAD;
+				border-radius: 6px;
+				position: relative;
+			}
+			
+			#remind {
+				font-size: 12px;
+				position: absolute;
+				top: ;
+				left: 50px;
+				color: #ADADAD;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form>
+			<label for="username">名称：
+				<input id="username" type="text" name="username" />
+				<p id="remind">必填，长度为4-16个字符</p>
+			</label>
+			<input type="button" id="submit" value="验证" />
+			<br />
+		</form>
+	</body>
+	
+	<script>
+		var aUsename = document.getElementById('username');
+		var aRemind = document.getElementById('remind');
+		document.getElementById('submit').onclick = check;
+		function check() {
+			var word = aUsename.value.trim();
+			if(getLen(word) == 0) {
+				aRemind.innerHTML = '姓名不能为空';
+				aRemind.style.color = 'red';
+				aUsename.style.border = '1px solid red';
+			}
+//			console.log(getLen(word));
+			else if( getLen(word)>6 || getLen(word)<4 ){
+				aRemind.innerHTML = '长度为4-16个字符';
+				aRemind.style.color = 'red';
+				aUsename.style.border = '1px solid red';
+			}
+			else{
+				aRemind.innerHTML = '符合要求';
+				aRemind.style.color = 'greenyellow';
+				aUsename.style.border = '1px solid greenyellow';
+			}
+		}
+		
+		function getLen(word){
+			var len = 0;
+			for(var i=0; i<word.length;i++){
+				var wordCode = word.charCodeAt(i);
+				if(wordCode>=0 && wordCode<=128){
+					len++;
+				}else{
+					len +=2;
+				}
+			}
+			return len;
+		}
+	</script>
+
+</html>

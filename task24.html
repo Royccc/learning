@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8">
+
+	<head>
+		<title></title>
+		<style type="text/css">
+			div {
+				border: 1px solid black;
+				padding: 20px;
+				float: left;
+				margin: 5px;
+				background-color: white;
+			}
+			
+			.active {
+				background-color: blue;
+			}
+			
+			.found {
+				background-color: red;
+			}
+			.select{
+				background-color: yellow;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button>深度优先遍历</button>
+		<button>广度优先遍历</button>
+		<input type="text" />
+		<button>深度优先搜索</button>
+		<button>广度优先搜索</button>
+		<button id="del">删除</button>
+		<input type="text" id="add-content"/>
+		<button id="add-btn">添加</button>
+		<section>
+			<div id="root">a
+				<div>b
+					<div>c
+						<div>d</div>
+						<div>e</div>
+						<div>f</div>
+						<div>g</div>
+					</div>
+					<div>h</div>
+					<div>i
+						<div>j</div>
+						<div>k</div>
+					</div>
+				</div>
+				<div>l
+					<div>m
+						<div>n</div>
+						<div>a</div>
+						<div>c</div>
+					</div>
+					<div>u
+						<div>v
+							<div>w</div>
+						</div>
+						<div>x</div>
+					</div>
+				</div>
+				<div>y</div>
+			</div>
+		</section>
+		<hr />
+		<p>考虑遍历时第一个节点的active问题；删除和添加节点之前 确认选中，删除元素后选择标志也同时被删除
+		要注意。button事件监听的优化问题没有解决</p>
+		<script src="js/task24.js"></script>
+		</body>
+
+</html>

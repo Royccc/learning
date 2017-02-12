@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		div {
+			border: 1px solid black;
+			background-color: white;
+		}
+		
+		.root {
+			display: flex;
+			height: 450px;
+			width: 800px;
+			margin: 20px;
+			justify-content: space-between;
+		}
+		
+		.child_1 {
+			display: flex;
+			height: 400px;
+			margin: auto 20px;
+		}
+		
+		.child_2 {
+			display: flex;
+			height: 350px;
+			margin: auto 20px;
+		}
+		
+		.child_3 {
+			display: flex;
+			height: 300px;
+			width: 20px;
+			margin: auto 20px;
+		}
+		.active{
+			background-color: blue;
+		}
+	</style>
+
+	<body>
+		<div class="root">
+			<div class="child_1">
+				<div class="child_2">
+					<div class="child_3"></div>
+					<div class="child_3"></div>
+				</div>
+				<div class="child_2">
+					<div class="child_3"></div>
+					<div class="child_3"></div>
+				</div>
+			</div>
+			<div class="child_1">
+				<div class="child_2">
+					<div class="child_3"></div>
+					<div class="child_3"></div>
+				</div>
+				<div class="child_2">
+					<div class="child_3"></div>
+					<div class="child_3"></div>
+				</div>
+			</div>
+		</div>
+		<input type="button" value="前序">
+		<input type="button" value="中序">
+		<input type="button" value="后序">
+		<script type="text/javascript" src="task_22.js"></script>
+	</body>
+
+	<script>
+		var treeRoot = document.getElementsByClassName('root')[0];
+		var putstr = [];
+		var timer;
+		//遍历
+		function preOrder(node) {
+			if(node !== null) {
+				putstr.push(node);
+				preOrder(node.firstElementChild);
+				preOrder(node.lastElementChild);
+			}
+		}
+		function inOrder(node){
+			if(node !== null){
+				inOrder(node.firstElementChild);
+				putstr.push(node);
+				inOrder(node.lastElementChild);
+			}
+		}
+		function postOrder(node){
+			if(node !== null){
+				postOrder(node.firstElementChild);
+				postOrder(node.lastElementChild);
+				putstr.push(node);
+			}
+		}
+		//动画效果
+		function animated() {
+			var i = 0;
+			putstr[i].style.backgroundColor = 'blue';
+			timer = setInterval(function() {
+				i++;
+				if(i < putstr.length) {
+					putstr[i - 1].style.backgroundColor = 'white';
+					putstr[i].style.backgroundColor = 'blue';
+				} else {
+					putstr[i-1].style.backgroundColor = 'white';
+					clearInterval(timer);
+				}
+			}, 500);
+
+		}
+		//清空计时器,否则putstr会累加;没运行完时再次点击，清除当前所有颜色
+		function areset() {
+			putstr = [];
+			clearInterval(timer);
+			var divs = document.getElementsByTagName('div');
+			for (var i = 0; i < divs.length; i++) {
+				divs[i].style.backgroundColor = 'white';
+			}
+		}
+
+		var aInput = document.getElementsByTagName('input');
+	
+		aInput[0].onclick = function() {
+			areset();
+			preOrder(treeRoot);
+			animated();
+		};
+		aInput[1].onclick = function() {
+			areset();
+			inOrder(treeRoot);
+			animated();
+		};
+		aInput[2].onclick = function() {
+			areset();
+			postOrder(treeRoot);
+			animated();
+		};
+	</script>
+<hr />
+<p>都在html中 所以没有考虑代码复用</p>
+</html>

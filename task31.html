@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			form {
+				width: 800px;
+				margin: 50px auto;
+			}
+			
+			input {
+				height: 15px;
+				width: 15px;
+				margin-left: 200px;
+			}
+			
+			.student,
+			.graduate {
+				margin-left: 100px;
+				margin-top: 50px;
+			}
+			
+			label {
+				font-size: 14px;
+				font-weight: bold;
+			}
+			
+			select,
+			#company {
+				height: 30px;
+				margin: 0 100px 0 20px;
+				border-radius: 6px;
+				text-indent: 5px;
+			}
+			
+			#city {
+				width: 150px;
+				;
+			}
+			
+			#school {
+				width: 250px;
+			}
+			
+			#company {
+				border: 1px solid #ADADAD;
+				width: 500px;
+			}
+			
+			.hidden {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form>
+			<input name="optionsRadios" type="radio" value="student" onclick="func1()" />在校生
+			<input name="optionsRadios" type="radio" value="graduate" onclick="func2()" />非在校生
+			<br />
+			<div class="student hidden">
+				<label for="city">学校</label>
+				<select id="city">
+					<option value="bj" selected>北京</option>
+					<option value="sh">上海</option>
+					<option value="hrb">哈尔滨</option>
+					<option value="hz">杭州</option>
+				</select>
+				<select id="school">
+					<option>北京大学</option>
+					<option>清华大学</option>
+					<option>中国人民大学</option>
+				</select>
+			</div>
+
+			<div class="graduate hidden">
+				<label for="company">就业单位</label>
+				<input type="text" id="company" />
+			</div>
+
+		</form>
+	</body>
+
+	<script>
+		$ = function(el) {return document.querySelector(el);};
+		$$ = function(el) {return document.querySelectorAll(el);};
+
+		//点击显示表单详情
+		function func1() {
+			//		console.log($('.graduate').className) 
+			$('.graduate').className = 'graduate hidden';
+			$('.student').className = 'student';
+		}
+		function func2() {
+			$('.student').className = 'student hidden';
+			$('.graduate').className ='graduate';
+		}
+		
+		var data = {
+			bj: ["北京大学", "清华大学", "中国人民大学"],
+			sh: ["复旦大学", "上海交通大学", "同济大学"],
+			hz: ["浙江大学", "杭州电子科技大学", "浙江工业大学"],
+			hrb: ["哈尔滨工业大学", "哈尔滨理工大学"]
+		};
+		
+		//展示学校列表	
+		function getSchool() {
+			var dataName = $$('option')[$('#city').selectedIndex].value;
+			//	console.log(data['bj'])   ; //属性名为bj时的值
+			var content = '';
+			for(var i = 0; i < data[dataName].length; i++) {
+				content += '<option>' + data[dataName][i] + '</option>';
+			}
+			$('#school').innerHTML = content;
+		}
+
+		//点击切换城市
+		$('#city').addEventListener('change', getSchool);
+	</script>
+
+</html>
